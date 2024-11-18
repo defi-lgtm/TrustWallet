@@ -1,0 +1,54 @@
+<div class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-800 to-indigo-800 py-4 px-8 shadow-lg">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-white text-2xl font-bold hover:text-indigo-200 transition duration-200">DefiTrustWallet</a>
+      <nav class="hidden md:flex space-x-8 relative">
+        <div class="relative">
+          <button (click)="toggleDropdown()" class="text-white hover:text-indigo-300 transition duration-200">Products</button>
+          <div *ngIf="dropdownOpen" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden z-10">
+            <a (click)="navigateToWallet()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">App</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">GHO</a>
+          </div>
+        </div>
+        <div class="relative">
+          <button (click)="toggleResourcesDropdown()" class="text-white hover:text-indigo-300 transition duration-200">Resources</button>
+          <div *ngIf="resourcesDropdownOpen" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden z-10">
+            <a (click)="navigateToBrand()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Brand</a>
+            <a (click)="navigateToFAQ()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">FAQ</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Help & Support</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Governance</a>
+          </div>
+        </div>
+        <a href="#" class="text-white hover:text-indigo-300 transition duration-200">Developers</a>
+        <a href="#" class="text-white hover:bg-indigo-600 px-4 py-1 rounded-full transition duration-200">Open App</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-8">
+    <h1 class="text-3xl font-bold text-center mb-8">FAQ</h1>
+    <p class="text-center mb-8">Quick answers to common questions.</p>
+
+    <div class="space-y-4">
+      <div (click)="toggle(0)" class="cursor-pointer border-b border-gray-300 pb-2">
+        <h2 class="text-xl font-semibold">What is Aave?</h2>
+        <p *ngIf="isOpen(0)" class="text-gray-600">Aave is a decentralised non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market while earning interest, and borrowers can access liquidity by providing collateral that exceeds the borrowed amount.</p>
+      </div>
+      <div (click)="toggle(1)" class="cursor-pointer border-b border-gray-300 pb-2">
+        <h2 class="text-xl font-semibold">How do I interact with Aave?</h2>
+        <p *ngIf="isOpen(1)" class="text-gray-600">Aave is a decentralised, non-custodial liquidity protocol that is completely permissionless, meaning anyone can access it. Users can interact with Aave through a user-friendly interface or directly with its smart contracts on supported blockchain networks. This openness also enables the creation of third-party services or applications that integrate with the protocol.</p>
+      </div>
+      <div (click)="toggle(2)" class="cursor-pointer border-b border-gray-300 pb-2">
+        <h2 class="text-xl font-semibold">Do I need a wallet to interact with Aave?</h2>
+        <p *ngIf="isOpen(2)" class="text-gray-600">Yes, you need a wallet to interact with Aave. Each instance of the Aave Protocol is deployed to a blockchain network. To interact with Aave, you need a wallet on the corresponding network such as a hardware wallet, browser extension, mobile wallet, multi-signature wallets, among others.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-4 text-center mt-auto">
+    <p>© 2024 DefiTrustWallet. All rights reserved.</p>
+  </footer>
+</div>

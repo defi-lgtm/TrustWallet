@@ -1,0 +1,114 @@
+<div class="flex flex-col bg-black text-white min-h-screen p-4">
+  <!-- Header Section -->
+  <div class="flex justify-between items-center py-4 border-b border-gray-700">
+    <div class="text-lg font-bold">Bill H-A5K</div>
+    <div class="flex items-center">
+      <i class="material-icons h-6 w-6 mr-4">notifications</i>
+    </div>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div class="flex justify-around mt-4 text-lg font-semibold">
+    <button
+      *ngFor="let tab of tabs"
+      [class.text-white]="tab.active"
+      [class.text-gray-400]="!tab.active"
+    >
+      {{ tab.label }}
+    </button>
+  </div>
+
+  <!-- Balance Section -->
+  <div class="flex flex-col items-center py-4">
+    <p class="text-3xl font-bold">${{ balance.total | number : "1.2-2" }}</p>
+    <p class="text-sm text-gray-500">{{ balance.btc }} BTC</p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="grid grid-cols-4 gap-4 text-center text-xs mt-4">
+    <button
+      *ngFor="let action of actions"
+      class="flex flex-col items-center justify-center"
+      (click)="action.label === 'Send' ? goToWithdraw() : null"
+    >
+      <i class="material-icons h-6 w-6">{{ action.icon }}</i>
+      <span class="mt-1">{{ action.label }}</span>
+    </button>
+  </div>
+
+  <!-- Search and Filters -->
+  <div class="flex items-center bg-gray-800 p-2 rounded-md mt-4">
+    <input
+      [(ngModel)]="searchTerm"
+      (input)="searchCryptos()"
+      class="bg-transparent text-white placeholder-gray-400 flex-1 focus:outline-none"
+      type="text"
+      placeholder="Search"
+    />
+    <button class="ml-4">
+      <i class="material-icons h-6 w-6">filter_list</i>
+    </button>
+  </div>
+
+  <!-- Cryptocurrency List -->
+  <div class="mt-4 space-y-2">
+    <div
+      *ngFor="let crypto of filteredCryptos"
+      class="flex justify-between items-center bg-gray-800 p-2 rounded-lg cursor-pointer"
+      (click)="goToCryptoDetails(crypto)"
+    >
+      <div class="flex items-center">
+        <img [src]="crypto.icon" [alt]="crypto.name" class="h-6 w-6 mr-2" />
+        <div>
+          <p class="text-sm">{{ crypto.name }}</p>
+          <p class="text-xs text-gray-400">
+            ${{ crypto.price | number : "1.2-2" }}
+          </p>
+        </div>
+      </div>
+      <p class="font-bold">${{ crypto.valueUSD | number : "1.2-2" }}</p>
+    </div>
+
+    <!-- TetherUS Entry (single entry as per your setup) -->
+    <div
+      class="flex justify-between items-center bg-gray-800 p-2 rounded-lg cursor-pointer"
+      (click)="goToCryptoDetails({ name: 'TetherUS', icon: '/TetherUS.png' })"
+    >
+      <div class="flex items-center">
+        <img src="/TetherUS.png" alt="TetherUS" class="h-6 w-6 mr-2" />
+        <div>
+          <p class="text-sm">TetherUS</p>
+          <p class="text-xs text-gray-400">USDT</p>
+        </div>
+      </div>
+      <p class="font-bold">$2,141,600.00
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div
+    class="flex justify-between items-center bg-gray-900 p-4 mt-auto text-xs"
+  >
+    <button class="flex flex-col items-center justify-center text-green-400">
+      <i class="material-icons h-6 w-6">account_balance_wallet</i>
+      <span>Wallet</span>
+    </button>
+    <button class="flex flex-col items-center justify-center text-gray-400">
+      <i class="material-icons h-6 w-6">store</i>
+      <span>Market</span>
+    </button>
+    <button class="flex flex-col items-center justify-center text-gray-400">
+      <i class="material-icons h-6 w-6">search</i>
+      <span>Explore</span>
+    </button>
+    <button class="flex flex-col items-center justify-center text-gray-400">
+      <i class="material-icons h-6 w-6">swap_horiz</i>
+      <span>Swap</span>
+    </button>
+    <button class="flex flex-col items-center justify-center text-gray-400">
+      <i class="material-icons h-6 w-6">attach_money</i>
+      <span>Earn</span>
+    </button>
+  </div>
+</div>

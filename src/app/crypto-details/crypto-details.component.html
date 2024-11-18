@@ -1,0 +1,63 @@
+<div class="flex flex-col items-center bg-white p-4 min-h-screen">
+  <!-- Title and Icon for Cryptocurrency -->
+  <h1 class="text-2xl font-bold mb-4">{{ crypto?.name }}</h1>
+  <img [src]="crypto?.icon" [alt]="crypto?.name" class="h-12 w-12 mb-4" />
+
+  <!-- Price and Value Section for Bitcoin -->
+  <div class="bg-gray-800 p-4 rounded-lg text-white w-2/3">
+    <p class="text-lg">
+      <strong>Price:</strong>
+      <span *ngIf="crypto?.name === 'BTC (Bitcoin)'; else otherPrice">
+        $34.12
+      </span>
+      <ng-template #otherPrice>
+        ${{ crypto?.price | number : "1.2-2" }}
+      </ng-template>
+    </p>
+
+    <p class="text-lg mt-2">
+      <strong>Value (USD):</strong>
+      <span *ngIf="crypto?.name === 'BTC (Bitcoin)'; else otherValue">
+        $2,145,000.00
+      </span>
+      <ng-template #otherValue>
+        ${{ crypto?.valueUSD | number : "1.2-2" }}
+      </ng-template>
+    </p>
+  </div>
+
+  <!-- Swap Section for Bitcoin -->
+  <div *ngIf="crypto?.name === 'BTC (Bitcoin)'" class="bg-gray-100 p-4 rounded-lg mt-4 w-2/3 flex items-center justify-between">
+    <div class="flex items-center">
+      <img src="/Bitcoin.svg.png" alt="crypto icon" class="h-8 w-8 mr-2" />
+      <div>
+        <strong>Swap</strong>
+        <p class="text-gray-600">{{ currentDate }}</p>
+      </div>
+    </div>
+    <div>
+      <p class="text-red-500">
+        -73,197,493.82 JST (BEP20)
+      </p>
+      <p class="text-green-500">
+        +2,145,000.00 USDT
+      </p>
+    </div>
+  </div>
+
+  <!-- Swap Section for TetherUS (Unchanged) -->
+  <div *ngIf="crypto?.name === 'TetherUS'" class="bg-gray-100 p-4 rounded-lg mt-4 w-2/3 flex items-center justify-between">
+    <div class="flex items-center">
+      <img src="/TetherUS.png" alt="crypto icon" class="h-8 w-8 mr-2" />
+      <div>
+        <strong>Swap</strong>
+        <p class="text-gray-600">{{ currentDate }}</p>
+      </div>
+    </div>
+    <div>
+      <p class="text-green-500">
+        $2,141,600.00 USDT
+      </p>
+    </div>
+  </div>
+</div>

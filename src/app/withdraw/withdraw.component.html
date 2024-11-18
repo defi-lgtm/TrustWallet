@@ -1,0 +1,71 @@
+<div class="flex flex-col items-center p-6">
+  <h1 class="text-2xl font-bold mb-2">Withdraw USDT</h1>
+  <p class="text-gray-500 mb-6">Withdrawal network - USDT (TRC20)</p>
+
+  <!-- Wallet Address Field -->
+  <div class="w-full max-w-md mb-4">
+    <label class="block text-gray-700 mb-2" for="walletAddress">USDT Wallet Address</label>
+    <input
+      id="walletAddress"
+      type="text"
+      placeholder="Enter USDT wallet address"
+      class="w-full p-2 border border-gray-300 rounded"
+      [(ngModel)]="walletAddress"
+    />
+  </div>
+
+  <!-- Network Selection -->
+  <div class="w-full max-w-md mb-4">
+    <label class="block text-gray-700 mb-2" for="network">Withdrawal Network</label>
+    <select id="network" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="network">
+      <option>USDT</option>
+      <option>Ethereum</option>
+      <option>TRC20</option>
+    </select>
+  </div>
+
+  <!-- Amount Field -->
+  <div class="w-full max-w-md mb-2">
+    <label class="block text-gray-700 mb-2" for="amount">Amount</label>
+    <input
+      id="amount"
+      type="text"
+      placeholder="Enter amount"
+      class="w-full p-2 border border-gray-300 rounded"
+      [(ngModel)]="amount"
+    />
+    <div class="text-sm text-blue-500 mt-2 cursor-pointer">USE ALL</div>
+  </div>
+
+  <!-- Minimum Fee and Limit Information -->
+  <div class="w-full max-w-md flex justify-between text-sm text-gray-500 mt-4">
+    <span>Min 0.001995 USDT Fee 0.00095 USDT</span>
+    <span>Daily limit 0.0068624 / 0.2 USDT</span>
+  </div>
+
+  <!-- Approximate Value -->
+  <div class="w-full max-w-md text-sm text-gray-500 mt-2 text-right">Approx. 0.00 USDC</div>
+
+  <!-- Review Button -->
+  <button class="w-full max-w-md mt-6 bg-blue-600 text-white p-3 rounded" (click)="reviewWithdrawal()">REVIEW WITHDRAWAL</button>
+
+  <!-- Processing Message -->
+  <!-- Processing Message -->
+<!-- Processing Message -->
+<div *ngIf="isProcessing" class="w-full max-w-md mt-4 flex items-center justify-center text-blue-600 font-semibold text-lg">
+  <svg class="animate-spin h-5 w-5 mr-2 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+  </svg>
+  Processing...
+</div>
+
+
+
+  <!-- Important Notice -->
+  <div class="w-full max-w-md text-xs text-gray-500 mt-6 text-center">
+    <p>Important: Only withdraw to a valid USDT address. Withdrawals to any other token or coin addresses may result in permanent loss of your funds.</p>
+    <p class="mt-2">Do not send directly to a crowdfund or ICO. We will not credit your account with tokens from that sale.</p>
+    <p class="mt-2">Once you have submitted your request, we will send a confirmation email with a confirmation link.</p>
+  </div>
+</div>

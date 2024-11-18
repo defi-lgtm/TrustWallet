@@ -1,0 +1,184 @@
+<div class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-800 to-indigo-800 py-4 px-8 shadow-lg">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <a href="/" class="text-white text-2xl font-bold hover:text-indigo-200 transition duration-200">
+        DefiTrustWallet
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 relative">
+        <div class="relative">
+          <button (click)="toggleDropdown()" class="text-white hover:text-indigo-300 transition duration-200">
+            Products
+          </button>
+          <div *ngIf="dropdownOpen" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden z-10">
+            <a (click)="navigateToWallet()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">App</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">GHO</a>
+          </div>
+        </div>
+        <div class="relative">
+          <button (click)="toggleResourcesDropdown()" class="text-white hover:text-indigo-300 transition duration-200">
+            Resources
+          </button>
+          <div *ngIf="resourcesDropdownOpen" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden z-10">
+            <a (click)="navigateToBrand()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Brand</a>
+            <a (click)="navigateToFAQ()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">FAQ</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Help & Support</a>
+            <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Governance</a>
+          </div>
+        </div>
+        <a href="#" class="text-white hover:text-indigo-300 transition duration-200">Developers</a>
+        <a href="#" class="text-white hover:bg-indigo-600 px-4 py-1 rounded-full transition duration-200">Open App</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div *ngIf="mobileMenuOpen" class="md:hidden mt-4 bg-white rounded-lg shadow-lg p-4">
+      <div class="flex flex-col space-y-2">
+        <button (click)="toggleDropdown()" class="text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">
+          Products
+        </button>
+        <div *ngIf="dropdownOpen" class="pl-4">
+          <a (click)="navigateToWallet()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">App</a>
+          <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">GHO</a>
+        </div>
+        <button (click)="toggleResourcesDropdown()" class="text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">
+          Resources
+        </button>
+        <div *ngIf="resourcesDropdownOpen" class="pl-4">
+          <a (click)="navigateToBrand()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Brand</a>
+          <a (click)="navigateToFAQ()" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">FAQ</a>
+          <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Help & Support</a>
+          <a href="#" class="block text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Governance</a>
+        </div>
+        <a href="#" class="text-gray-800 hover:bg-indigo-600 hover:text-white px-4 py-2 transition">Developers</a>
+        <a (click)="navigateToWallet()" class="text-white hover:bg-indigo-600 px-4 py-1 rounded-full transition duration-200">Open App</a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white flex flex-col items-center justify-center py-24">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-center">
+      Access the full power of DeFi
+    </h1>
+    <p class="text-lg md:text-2xl mb-8 text-center">
+      Supply, borrow, swap, stake, and more. All at your fingertips.
+    </p>
+    <button (click)="navigateToWallet()" class="px-8 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-200 transition">
+      Get Started
+    </button>
+    <p class="mt-4 text-sm text-gray-200">
+      * Currently supporting over $20.95 billion in liquidity
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="flex justify-center py-16 bg-gray-100">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-blue-400 rounded-full p-4 hover:scale-105 transform transition">
+          <i class="material-icons text-white">sync_alt</i>
+        </div>
+        <p class="mt-2 font-semibold">Liquidity</p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-green-400 rounded-full p-4 hover:scale-105 transform transition">
+          <i class="material-icons text-white">security</i>
+        </div>
+        <p class="mt-2 font-semibold">Security</p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-yellow-400 rounded-full p-4 hover:scale-105 transform transition">
+          <i class="material-icons text-white">trending_up</i>
+        </div>
+        <p class="mt-2 font-semibold">Staking</p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-red-400 rounded-full p-4 hover:scale-105 transform transition">
+          <i class="material-icons text-white">compare_arrows</i>
+        </div>
+        <p class="mt-2 font-semibold">Swapping</p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-purple-400 rounded-full p-4 hover:scale-105 transform transition">
+          <i class="material-icons text-white">insights</i>
+        </div>
+        <p class="mt-2 font-semibold">Analytics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DeFi by the Numbers Section -->
+  <section class="py-20 bg-gray-50 text-center flex flex-col items-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">DeFi by the Numbers</h2>
+    <div class="flex flex-col md:flex-row justify-around items-center w-full md:w-3/4">
+      <div class="mb-8 md:mb-0 text-center">
+        <h3 class="text-2xl font-semibold mb-2">$20.95B</h3>
+        <p class="text-gray-600">Net deposits supplied across 13 networks.</p>
+      </div>
+      <div class="mt-8 md:mt-0 text-center">
+        <h3 class="text-2xl font-semibold mb-2">$205.29B</h3>
+        <p class="text-gray-600">Volume, past 30 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DeFi Unlocked Section -->
+  <section class="py-20 bg-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">DeFi, unlocked.</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Swap</h3>
+        <p>Swap any ERC-20, even those borrowed or supplied.</p>
+      </div>
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Stake</h3>
+        <p>Earn rewards for securing the protocol.</p>
+      </div>
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Health Factor</h3>
+        <p>Easily track the risk level of your borrow positions.</p>
+      </div>
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Multi-Network</h3>
+        <p>Deployable on any EVM compatible network.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Section -->
+  <section class="py-20 bg-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">Brand</h2>
+    <p class="mb-6">Assets, examples, and guides.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div class="bg-purple-500 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold text-white mb-2">Aave Brand</h3>
+        <p class="text-white mb-4">Your brand identity is essential for your presence in the DeFi space. Use our assets wisely.</p>
+        <img src="https://aave.com/assets/img/aave-logo.svg" alt="Aave Logo" class="mb-4 w-full h-auto">
+      </div>
+      <div class="bg-green-500 p-6 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold text-white mb-2">Download Brand Kit</h3>
+        <p class="text-white mb-4">Logos, illustrations, and more.</p>
+        <a href="path_to_brand_kit.zip" class="bg-white text-green-500 px-4 py-2 rounded transition hover:bg-gray-200">Download</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-4 text-center mt-auto">
+    <p>© 2024 DefiTrustWallet. All rights reserved.</p>
+  </footer>
+</div>
